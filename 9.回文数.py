@@ -12,4 +12,4 @@ class Solution:
             x = x // 10
         re = re*10 + x%10
         if re == n: return True
-        return False
+        return False 

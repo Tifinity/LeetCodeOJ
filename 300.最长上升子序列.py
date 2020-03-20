@@ -5,18 +5,14 @@ def lengthOfLIS(nums):
     输出: 4 
     解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
     '''
+    # 动态规划
     dp = [0 for i in range(len(nums))]
     dp[0] = 1
-    mlen = 1
-    for i in range(1, len(nums)):
-        print(dp, nums[i])
-        if dp[i] <= nums[i]:
-            dp[i] = mlen
-        else:
-            dp[i] = mlen + 1
-            mlen = dp[i]
-    
-    return mlen
+    for i in range(len(nums)):
+        for j in range(i):
+            if nums[i] > nums[j]:
+                dp[i] = max(dp[i], dp[j] + 1)
+    return dp[n]
         
 print(lengthOfLIS([10,9,2,5,3,7,101,18]))
         
